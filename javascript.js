@@ -11,19 +11,19 @@ let secondNum = '';
 let result = '';
 
 function add(a, b) {
-	return (+a + +b).toString();
+	return (Math.round((+a + +b) * 100) / 100).toString();
 };
 
 function subtract(a, b) {
-	return (+a - +b).toString();
+	return (Math.round((+a - +b) * 100) / 100).toString();
 };
 
 function multiply(a, b) {
-	return (+a * +b).toString();
+	return (Math.round((+a * +b) * 100) / 100).toString();
 };
 
 function divide(a, b) {
-	return (+a / +b).toString();
+	return (Math.round((+a / +b) * 100) / 100).toString();
 };
 
 function operate(firstNum, operator, secondNum) {
