@@ -1,0 +1,88 @@
+body {
+	font-family: sans-serif;
+	font-size: 16px;
+	background-color: #EEEEEE;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: auto;
+	height: auto;
+	background-color: #393E46;
+	border-radius: 25px;
+	border: 1px solid black;
+}
+
+.display {
+	background-color: #8585ad;
+	width: 300px;
+	height: 95px;
+	margin: 25px;
+	border: 1px solid #222831;
+}
+
+.displayHistoric,
+.displayResult {
+	box-sizing: border-box;
+	height: 50%;
+	font-size: 23px;
+	display: flex;
+	align-items: center;
+	padding: 2px;
+}
+
+.displayResult {
+	justify-content: flex-end;
+}
+
+button {
+	font-family: sans-serif;
+	font-size: 16px;
+	width: 100%;
+	height: 50px;
+	margin: 0;
+	background-color: #EEEEEE;
+	border: 1px solid #222831;
+}
+
+
+
+.allBtnContainer {
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	width: 300px;
+	gap: 1px;
+	margin: 0 25px 25px 25px;
+}
+
+.firstRow,
+.secondRow,
+.thirdRow,
+.fourthRow {
+	display: flex;
+	justify-content: space-between;
+	gap: 1px;
+	flex-grow: 1;
+	box-sizing: border-box;
+}
+
+.clearContainer {
+	box-sizing: border-box;
+	width: 300px;
+	margin: 0 0 0 25px;
+}
+
+.buttonsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+}
