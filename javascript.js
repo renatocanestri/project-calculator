@@ -9,6 +9,10 @@ let secondNumber = '';
 let firstNum = '';
 let secondNum = '';
 let result = '';
+let text = '';
+let isFirst = true; 
+let isSecond = false;
+let isDivByZero = false;
 
 function add(a, b) {
 	return (Math.round((+a + +b) * 100) / 100).toString();
@@ -41,7 +45,7 @@ function operate(firstNum, operator, secondNum) {
 buttons.forEach(button => {
 	button.addEventListener('click', () => {
 		buttonSelected = button.id;
-		if (buttonSelected === 'clear') {
+		if (buttonSelected === 'clear' || isDivByZero) {
 			clearAll();
 		} else {
 			masterLogic(buttonSelected);
@@ -100,12 +104,10 @@ function clearAll() {
 	result = '';
 	isFirst = true; 
 	isSecond = false;
+	isDivByZero = false;
 	displayHistoric('');
 	displayResult('');
 };
-
-let isFirst = true; 
-let isSecond = false; 
 
 function masterLogic(buttonSelected) {
 	if (isFirst && !isOperator(buttonSelected)) {
@@ -120,17 +122,23 @@ function masterLogic(buttonSelected) {
 		secondNum = writeSecondNumber(buttonSelected);
 		return secondNum;
 	} else if (isSecond && !isOperator(buttonSelected) && isEqual(buttonSelected)) {
-		result = writeResult();
+		if (secondNum === '0') {
+			divByZeroHandler();
+		} else {
+			result = writeResult();
+		}
 	} else if (isSecond && isOperator(buttonSelected) && !isEqual(buttonSelected)) {
-		result = writeResult();
-		firstNumber = '';
-		secondNumber = '';
-		firstNumber = result;
-		op = writeOperator(buttonSelected);
+		if (secondNum === '0') {
+			divByZeroHandler();
+		} else {
+			result = writeResult();
+			firstNumber = '';
+			secondNumber = '';
+			firstNumber = result;
+			op = writeOperator(buttonSelected);
+		}
 	}
 };
-
-let text = '';
 
 function displayHistoric(string) {
 	text = string;
@@ -142,7 +150,10 @@ function displayResult(string) {
 	resultDisplay.textContent = text;
 };
 
-
+function divByZeroHandler() {
+	displayResult('Can\'t do division by 0!');
+	isDivByZero = true;
+};
 
 
 
