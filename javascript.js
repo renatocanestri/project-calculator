@@ -41,7 +41,11 @@ function operate(firstNum, operator, secondNum) {
 buttons.forEach(button => {
 	button.addEventListener('click', () => {
 		buttonSelected = button.id;
-		masterLogic(buttonSelected);
+		if (buttonSelected === 'clear') {
+			clearAll();
+		} else {
+			masterLogic(buttonSelected);
+		}
 	});
 });
 
@@ -84,6 +88,20 @@ function isEqual(buttonSelected) {
 		return true;
 	};
 	return false;
+}; 
+
+function clearAll() {
+	buttonSelected = '';
+	firstNumber = '';
+	operator = '';
+	secondNumber = '';
+	firstNum = '';
+	secondNum = '';
+	result = '';
+	isFirst = true; 
+	isSecond = false;
+	displayHistoric('');
+	displayResult('');
 };
 
 let isFirst = true; 
