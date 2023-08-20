@@ -1,6 +1,7 @@
 let historicDisplay = document.querySelector('.displayHistoric');
 let resultDisplay = document.querySelector('.displayResult');
 let buttons = document.querySelectorAll('button');
+let buttonDot = document.getElementById('.');
 
 let buttonSelected = '';
 let firstNumber = '';
@@ -13,6 +14,7 @@ let text = '';
 let isFirst = true; 
 let isSecond = false;
 let isDivByZero = false;
+let isFirstDecimal = true;
 
 function add(a, b) {
 	return (Math.round((+a + +b) * 100) / 100).toString();
@@ -107,20 +109,36 @@ function clearAll() {
 	isDivByZero = false;
 	displayHistoric('');
 	displayResult('');
+	isFirstDecimal = true;
+	buttonDot.disabled = false;
 };
 
 function masterLogic(buttonSelected) {
 	if (isFirst && !isOperator(buttonSelected)) {
-		firstNum = writeFirstNumber(buttonSelected);
-		return firstNum;
+		if (isFirstDecimal && buttonSelected === '.') {
+			decimalPlaceHandler();
+			firstNum = writeFirstNumber(buttonSelected);
+			return firstNum;
+		} else {
+			firstNum = writeFirstNumber(buttonSelected);
+			return firstNum;
+		};
 	} else if (isFirst && isOperator(buttonSelected)) {
 		op = writeOperator(buttonSelected);
 		isFirst = false;
 		isSecond = true;
+		isFirstDecimal = true;
+		buttonDot.disabled = false;
 		return op;
 	} else if (isSecond && !isOperator(buttonSelected) && !isEqual(buttonSelected)) {
-		secondNum = writeSecondNumber(buttonSelected);
-		return secondNum;
+		if (isFirstDecimal && buttonSelected === '.') {
+			decimalPlaceHandler();
+			secondNum = writeSecondNumber(buttonSelected);
+			return secondNum;
+		} else {
+			secondNum = writeSecondNumber(buttonSelected);
+			return secondNum;
+		};
 	} else if (isSecond && !isOperator(buttonSelected) && isEqual(buttonSelected)) {
 		if (secondNum === '0') {
 			divByZeroHandler();
@@ -135,6 +153,8 @@ function masterLogic(buttonSelected) {
 			firstNumber = '';
 			secondNumber = '';
 			firstNumber = result;
+			isFirstDecimal = true;
+			buttonDot.disabled = false;
 			op = writeOperator(buttonSelected);
 		}
 	}
@@ -155,6 +175,9 @@ function divByZeroHandler() {
 	isDivByZero = true;
 };
 
-
+function decimalPlaceHandler() {
+	isFirstDecimal = false;
+	buttonDot.disabled = true;
+};
 
 
