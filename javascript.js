@@ -49,6 +49,8 @@ buttons.forEach(button => {
 		buttonSelected = button.id;
 		if (buttonSelected === 'clear' || isDivByZero) {
 			clearAll();
+		} else if (buttonSelected === 'backspace') {
+			backspaceHandler();
 		} else {
 			masterLogic(buttonSelected);
 		}
@@ -180,4 +182,20 @@ function decimalPlaceHandler() {
 	buttonDot.disabled = true;
 };
 
-
+function backspaceHandler() {
+	if (isFirst) {
+		if (firstNumber.slice(-1) === '.') {
+			isFirstDecimal = true;
+			buttonDot.disabled = false;
+		};
+		firstNumber = firstNumber.slice(0, -1);
+		displayHistoric(firstNumber);
+	} else if (isSecond) {
+		if (secondNumber.slice(-1) === '.') {
+			isFirstDecimal = true;
+			buttonDot.disabled = false;
+		};
+		secondNumber = secondNumber.slice(0, -1);
+		displayHistoric(firstNumber + ' ' + operator + ' ' + secondNumber);
+	};
+};

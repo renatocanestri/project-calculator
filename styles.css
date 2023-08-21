@@ -76,6 +76,8 @@ button {
 }
 
 .clearContainer {
+	display: flex;
+	gap: 1px;
 	box-sizing: border-box;
 	width: 300px;
 	margin: 0 0 0 25px;
