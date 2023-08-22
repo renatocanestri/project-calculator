@@ -38,16 +38,13 @@ body {
 	height: auto;
 	background-color: #393E46;
 	border-radius: 10px;
-	border: 1px solid black;
 }
 
 .display {
-	/*background-color: #8585ad;*/
 	background-color: #EEEEEE;
 	width: 300px;
 	height: 95px;
 	margin: 25px;
-	border: 1px solid #222831;
 }
 
 .displayHistoric,
@@ -71,7 +68,7 @@ button {
 	height: 50px;
 	margin: 0;
 	background-color: #EEEEEE;
-	border: 1px solid #222831;
+	border: none;
 }
 
 
@@ -108,4 +105,22 @@ button {
 	display: flex;
 	flex-direction: column;
 	gap: 1px;
+}
+
+.equalsButton {
+	background-color: #149F26;
+	color: #EEEEEE;
+}
+
+.divideButton,
+.subtractButton,
+.multiplyButton,
+.plusButton {
+	background-color: #B6D2E2;
+	color: black;
+}
+
+#clear,
+#backspace {
+	background-color: #FF6B7D;
 }
